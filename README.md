@@ -1,5 +1,6 @@
 # ticTacToeMCTS
-python mcts algorithm with tictactoe
+python mcts algorithm with tictactoe (monte carlo tree search)
+-uses anytree library
 
 
 It's possible the algorithm is a little bit flawed, since the decision results are not very good for the AI's decisions.
