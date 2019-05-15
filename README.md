@@ -7,6 +7,12 @@ python mcts algorithm with tictactoe (monte carlo tree search)
 It's possible the algorithm is a little bit flawed, since the decision results are not very good for the AI's decisions.
 The code requires pip install anytree
 
+-actually as a fix to the algoritm only the walkerFuncTraversal method should be used in the mcts, because most likely it will
+have traversed the tree according to the algorithm. The treeiterator-based method walkUntilLeaf probably doesnt work as intended currently...
+
+-I just forgot to change the walkUntilLeaf into the walkerFuncTraversal!
+
+
 Code was developed in PyCharm IDE, and I just took all the files from the project directory and uploaded them to this repository
 
 useful links
