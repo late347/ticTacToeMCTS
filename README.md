@@ -7,6 +7,8 @@ python mcts algorithm with tictactoe (monte carlo tree search)
 It's possible the algorithm is a little bit flawed, since the decision results are not very good for the AI's decisions.
 The code requires pip install anytree
 
+Code was developed in PyCharm IDE, and I just took all the files from the project directory and uploaded them to this repository
+
 useful links
 
 I mostly tried to follow the tutorial from analyticsvidhya.com article below
