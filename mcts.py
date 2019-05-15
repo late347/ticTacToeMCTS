@@ -131,15 +131,12 @@ class MCTSalgo:
     """MAIN MCTS ALGORITHM"""
     def performMonteCarloTreeSearch(self, iterationsAmount):
         for j in range(1,iterationsAmount+1):
-            leafNode = self.walkUntilLeaf()
+            leafNode = self.walkerFuncTraversal()
             if leafNode.getVisited() == 0:
                 ##make Rolloout
                 reward = self.playRollout(leafNode)
                 self.backpropagate(reward)
-                #self.clearTraversed()
             else:
-                ##get possible actions
-                ##expandNode
                 ##select childNode from expandedOnes
                 ##make Rollout
                 actionsList, res = leafNode.getPossibleActions()
@@ -153,15 +150,19 @@ class MCTSalgo:
                     kakka = 10 #for debug only!
                     reward = self.playRollout(leafNode)
                     self.backpropagate(reward)
-                #self.clearTraversed()
-        #print("gameTree after AI_mcts_deliberations:\n", RenderTree(self.rootNode).by_attr())
-        ## what to do then?? I think it could return the newTreeBoardObject, so that the hhuman can play on it??
+            self.clearTraversed()
+        print("gameTree after AI_mcts_deliberations:\n", RenderTree(self.rootNode).by_attr())
+
         childList = list(self.rootNode.children)
         visitsList=[]
         for child in childList:
             visitsList.append(child.getVisited())
-        mostVisited =  childList[visitsList.index(max(visitsList))  ]
-        bestOpt = copy.deepcopy(mostVisited)
+        """mostVisited =  childList[visitsList.index(max(visitsList))  ]"""
+        highVisitCount = max(visitsList)
+        for child in childList:
+            if child.getVisited() == highVisitCount:
+                bestOpt = child
+        bestOpt = copy.deepcopy(bestOpt)
         bestOpt.parent=None
         if bestOpt.current_turn == 1:
             bestOpt.current_turn = 0
